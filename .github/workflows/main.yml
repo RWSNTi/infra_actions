@@ -72,8 +72,10 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         passphrase: ${{ secrets.PASSPHRASE }} # Если ваш ssh-ключ защищён фразой-паролем
         script: |
+          sudo docker login -u wanderyoughurt
+          ${{ secrets.DOCKER_PASSWORD }}
           # Выполняет pull образа с DockerHub
           sudo docker pull wanderyoughurt/wndry
           #остановка всех контейнеров
-          sudo docker stop $(sudo docker ps -a -q)
+          #sudo docker stop $(sudo docker ps -a -q)
           sudo docker run --rm -d -p 5000:5000 wanderyoughurt/wndry
