@@ -73,6 +73,7 @@ jobs:
         passphrase: ${{ secrets.PASSPHRASE }} # Если ваш ssh-ключ защищён фразой-паролем
         script: |
           # Выполняет pull образа с DockerHub
+          sudo docker login -u wanderyoughurt
           sudo docker pull wanderyoughurt/wndry
           #остановка всех контейнеров
           #sudo docker stop $(sudo docker ps -a -q)
